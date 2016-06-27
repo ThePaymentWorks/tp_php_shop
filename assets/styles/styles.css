@@ -1,0 +1,111 @@
+/* Styling for the example application */
+
+/* Styling for components */
+.btn {
+  border-radius: 0;
+}
+/* Styling for the navbar */
+.navbar-default {
+  height: 100vh;
+  width: 10%;
+  position: fixed;
+  background-color: #293846;
+}
+.navbar-nav > li {
+  text-align: center;
+}
+.navbar-default .navbar-nav > li > a {
+  color: white !important;
+}
+/* make sidebar nav vertical */
+@media (min-width: 768px) {
+  .sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+  }
+  .sidebar-nav .navbar ul {
+    float: none;
+  }
+  .sidebar-nav .navbar ul:not {
+    display: block;
+  }
+  .sidebar-nav .navbar li {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+/* Styling for the logo */
+.logo {
+  height: 150px;
+  width: 150px;
+}
+
+/* Styling for the grid items  */
+.grid-item {
+  margin: 15px;
+  box-shadow: 0 0 5px #888888;
+  max-width: 195px;
+  background-color: black;
+}
+.grid-item-image {
+  height: 100%;
+  width: 100%;
+}
+.grid-item-description {
+  padding: 5px;
+}
+
+.grid-item-image:after {
+  content: attr(data-content);
+  position:absolute;
+  width:100%;
+  height:100%;
+  max-width: 195px;
+  max-height: 200px;
+  top:15px;
+  left:30px;
+  background:rgba(0,0,0,0.6);
+  opacity:0;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+.grid-item-image:hover:after {
+  opacity:1;
+}
+.grid-item-image:after, .grid-item-image:before {
+    position:absolute;
+    opacity:0;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+.grid-item-image:after {
+    content:'\A';
+    width:100%;
+    height:100%;
+    max-width: 195px;
+    max-height: 200px;
+    top:15px;
+    left:30px;
+    background:rgba(0,0,0,0.6);
+}
+.grid-item-image:before {
+    content: attr(data-content);
+    width:100%;
+    height: 100%;
+    max-width: 195px;
+    max-height: 200px;
+    color:#fff;
+    z-index:1;
+    padding:4px 10px;
+    text-align:center;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+}
+.grid-item-image:hover:after, .grid-item-image:hover:before {
+    opacity:1;
+}

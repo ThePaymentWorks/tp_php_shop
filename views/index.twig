@@ -1,0 +1,19 @@
+{% extends "layout.twig" %}
+
+{% set title="Testing Pays" %}
+{% block content %}
+  {% for product in products %}
+
+    <div class="col-sm-3">
+      <div class="grid-item">
+        <div data-content="Price : $300" class="grid-item-image">
+          <img src="http://placehold.it/195x200">
+        </div>
+        <div class="grid-button">
+          <button class="btn btn-block btn-primary">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+  {% endfor %}
+{% endblock %}
