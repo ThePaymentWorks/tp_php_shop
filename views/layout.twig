@@ -18,12 +18,12 @@
 
           <ul class="nav navbar-nav">
             <div class="logo">
-              Logo
-              </div>
-              <li><a href="#">Store</a></li>
-              <li><a href="#">Checkout</a></li>
-              <li><a href="#">About</a></li>
-            </ul>
+              <p style="color:white;">Logo</p>
+            </div>
+            <li><a href="#">Store</a></li>
+            <li><a href="#">Checkout</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
 
           </div>
         </div>
@@ -35,9 +35,39 @@
       </div>
     </div>
 
-    <script   src="https://code.jquery.com/jquery-3.0.0.min.js"   integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="   crossorigin="anonymous"></script>
+    {% block javascripts %}
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+      <!-- Include jQuery from CDN -->
+      <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+      <script type="text/javascript">
+        // Add an item to the cart
+        $("button").on("click", function (event) {
+          // Get the product information
+          var data = $(this).data('content');
+          data = data.split(",");
+
+          // Add the item to the cart
+          $.ajax({
+            url: "/api/addtocart",
+            type: "POST",
+            data: {
+              name : data[0],
+              price: data[1]
+            }
+          }).done(function (res) {
+            console.log(res);
+            // Update the cart icon/list/total using the returned values
+          }).fail(function (err) {
+            console.log(err);
+          });
+        });
+      </script>
+
+    {% endblock %}
+
   </body>
 </html>
