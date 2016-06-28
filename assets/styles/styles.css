@@ -7,7 +7,6 @@
 /* Styling for the navbar */
 .navbar-default {
   height: 100vh;
-  width: 10%;
   position: fixed;
   background-color: #293846;
 }
