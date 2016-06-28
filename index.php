@@ -56,12 +56,12 @@ $app->get('/', function () use ($app) {
   ));
 });
 
-// Display the users cart to them 
+// Display the users cart to them
 $app->get('/cart', function () use ($app) {
   // Render the template
   return $app['twig']->render('cart.twig', array(
-    'session' => $app['session']->get('cart')
-  ))
+    'cart' => $app['session']->get('cart')
+  ));
 });
 
 // Add a product to the cart
