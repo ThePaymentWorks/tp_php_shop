@@ -10,8 +10,7 @@
   </head>
   <body style="margin:0">
 
-    <div class="row">
-    <div class="col-sm-2">
+    <div class="col-sm-2 row sidebar">
 
       <div class="sidebar-nav">
         <div class="navbar navbar-default" role="navigation">
@@ -22,19 +21,15 @@
             </div>
             <li><a href="/">Store</a></li>
             <li><a href="/cart">Cart</a></li>
-            <li><a href="#">Checkout</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="/checkout">Checkout</a></li>
           </ul>
 
           </div>
         </div>
       </div>
-      <div class="col-sm-9">
-        <div class="container">
-          {% block content %}{% endblock %}
-        </div>
-      </div>
-    </div>
+
+      {% block content %}{% endblock %}
+
 
     {% block javascripts %}
 
@@ -73,6 +68,7 @@
       <script type="text/javascript">
         // Add an item to the cart
         $("#emptycart").on("click", function (event) {
+          console.log('Hi');
           // Add the item to the cart
           $.ajax({
             url: "/api/emptycart",

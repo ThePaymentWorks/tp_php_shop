@@ -1,0 +1,81 @@
+{% extends "layout.twig" %}
+
+{% set title="Testing Pays" %}
+{% block content %}
+
+  <div class="col-sm-10">
+
+    <div class="col-sm-8">
+      <div class="row margin-top">
+        <div class="col-sm-12">
+          <h2>Checkout</h2>
+        </div>
+        <hr width="100%" style="border-top: 1px solid black">
+      </div>
+      <div class="row">
+        <div class="col-sm-10">
+          <form class="form-horizontal">
+
+            <div class="form-group">
+              <label for="card-holder" class="control-label col-sm-3">Card Holder</label>
+              <div class="col-sm-6">
+                <input class="form-control" id="card-holder" placeholder="John Doe">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="card-Number" class="control-label col-sm-3">Card Number</label>
+              <div class="col-sm-6">
+                <input class="form-control" id="card-number" placeholder="e.g. 4319 5046 8156 3245">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="expiry-date" class="control-label col-sm-3">Expiry Date</label>
+              <div class="col-sm-2">
+                <input class="form-control" id="expiry-date" placeholder="MM/YY">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="cvv" class="control-label col-sm-3">CVV</label>
+              <div class="col-sm-2">
+                <input class="form-control" id="cvv" placeholder="000">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="total" class="control-label col-sm-3">Total</label>
+              <div class="col-sm-1 control-label">
+                <b>${{total}}</b>
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="form-group">
+              <div class="col-sm-3"></div>
+              <div class="col-sm-6">
+                <button type="button" name="button" class="btn btn-primary btn-block">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-1">
+
+    </div>
+
+    <div class="col-sm-3 no-padding">
+      <div class="responses-body">
+        <div class="">
+          Responses
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+{% endblock %}

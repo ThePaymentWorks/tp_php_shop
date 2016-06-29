@@ -59,7 +59,64 @@ $app->get('/', function () use ($app) {
 $app->get('/cart', function () use ($app) {
   // Render the template
   return $app['twig']->render('cart.twig', array(
-    'cart' => $app['session']->get('cart')
+    'cart' => $app['session']->get('cart'),
+    'total' => $app['session']->get('total')
+  ));
+});
+
+$app->get('/checkout', function () use ($app) {
+  $gateway = Omnipay::create('Realex_Remote');
+
+  $gateway->setMerchantId(1);
+  $gateway->setAccount(2);
+  $gateway->setSecret(3);
+
+  $formInputData = array(
+    'firstName' => 'Bobby',
+    'lastName' => 'Tables',
+    'number' => '4111111111111111',
+  );
+  $card = new CreditCard($formInputData);
+
+  $response = $gateway->purchase(['amount' => 10.00, $card]);
+
+  print_r($settings = $gateway->getDefaultParameters());
+  $response = $gateway->purchase([
+    'transactionId' => 1,
+    'amount'        => 10.00,
+    'currency'      => 'USD',
+    'card'          => $card
+  ])->send();
+
+  // [
+  //   'number' => 4242424242424242,
+  //   'expdate' => '0919',
+  //   'chname' => 'John Doe',
+  //   'cvn' => 222
+  // ]
+
+  if ($response->isSuccessful()) {
+      // payment was successful: update database
+      print_r($response);
+  } elseif ($response->isRedirect()) {
+      // redirect to offsite payment gateway
+      $response->redirect();
+  } else {
+      // payment failed: display message to customer
+      echo $response->getMessage();
+  }
+
+  // $timestamp = strftime("%Y%m%d%H%M%S");
+  // $merchantId = $this->getMerchantId();
+  // $orderId = $this->getTransactionId();
+  // $amount = $this->getAmountInteger();
+  // $currency = $this->getCurrency();
+  // $cardNumber = $this->getCard()->getNumber();
+  // $secret = $this->getSecret();
+
+  // Render the template
+  return $app['twig']->render('checkout.twig', array(
+    'total' => $app['session']->get('total')
   ));
 });
 
@@ -90,6 +147,11 @@ $app->post('/api/addtocart', function (Request $request) use ($app) {
         $value->quantity += $product->quantity;
         $value->total += $product->price;
 
+        // Update the carts total
+        $total = $app['session']->get('total');
+        $total += $product->price;
+        $app['session']->set('total', $total);
+
         // Item found break out of the loop
         break;
       } else {
@@ -97,6 +159,11 @@ $app->post('/api/addtocart', function (Request $request) use ($app) {
         if ($key == $lastArrayKey) {
           // Append the new products into the array
           array_push($cart, $product);
+
+          // Update the carts total
+          $total = $app['session']->get('total');
+          $total += $product->price;
+          $app['session']->set('total', $total);
         }
       }
     }
@@ -113,6 +180,11 @@ $app->post('/api/addtocart', function (Request $request) use ($app) {
     // Get the new carts values
     $cart = $app['session']->get('cart');
 
+    // Update the carts total
+    $total = $app['session']->get('total');
+    $total += $product->price;
+    $app['session']->set('total', $total);
+
     // Return the new cart
     return $app->json($cart, 202);
   }
@@ -120,10 +192,9 @@ $app->post('/api/addtocart', function (Request $request) use ($app) {
 
 $app->post('/api/emptycart', function () use ($app) {
   $app['session']->set('cart', null);
+  $app['session']->set('total', null);
   return 'Cart emptied';
 });
-
-$app->get('/checkout', function () use ($app) {});
 
 $app->run();
 

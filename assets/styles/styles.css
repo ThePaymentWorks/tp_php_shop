@@ -6,6 +6,12 @@ body {
 hr {
   border-top: 1px solid #e0e4cc;
 }
+.no-padding {
+  padding: 0;
+}
+.margin-top {
+  margin-top: 30px;
+}
 /* Styling for components */
 .btn {
   border-radius: 0;
@@ -50,6 +56,9 @@ hr {
     padding-top: 12px;
     padding-bottom: 12px;
   }
+}
+.sidebar {
+  height: 100vh;
 }
 /* Styling for the logo */
 .logo {
@@ -146,4 +155,10 @@ hr {
 .cart-total {
   padding-top: 15px;
   padding-bottom: 15px;
+}
+
+/* Styling for the checkout page */
+.responses-body {
+  background-color: #38414D;
+  height: 100vh;
 }
