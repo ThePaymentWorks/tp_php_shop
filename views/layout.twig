@@ -46,7 +46,8 @@
 
       <script type="text/javascript">
         // Add an item to the cart
-        $("#addToCart").on("click", function (event) {
+        $(".addToCart").on("click", function (event) {
+          console.log('Add to cart');
           // Get the product information
           var data = $(this).data('content');
           data = data.split(",");
