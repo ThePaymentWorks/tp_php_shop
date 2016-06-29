@@ -66,20 +66,39 @@ $app->get('/cart', function () use ($app) {
 
 // Add a product to the cart
 $app->post('/api/addtocart', function (Request $request) use ($app) {
-
   // Create an empty php object
   $product = new stdClass();
 
   // Assign properties to the product
   $product->name = $request->request->get('name');
   $product->price = $request->request->get('price');
+  $product->quantity = $request->request->get('quantity');
 
   if(null !== $app['session']->get('cart')) {
     // Get the current array
     $cart = $app['session']->get('cart');
 
-    // Append the new products into the array
-    array_push($cart, $product);
+    // Get array keys
+    $arrayKeys = array_keys($cart);
+    // Fetch last array key
+    $lastArrayKey = array_pop($arrayKeys);
+
+    // Check if the item is already in the cart
+    foreach ($cart as $key => $value) {
+      // Check for a matching existing product
+      if ($value->name == $product->name) {
+        $value->quantity += $product->quantity;
+
+        // Item found break out of the loop
+        break;
+      } else {
+        // Check if this is the final element and push the array if it is
+        if ($key == $lastArrayKey) {
+          // Append the new products into the array
+          array_push($cart, $product);
+        }
+      }
+    }
 
     // Save the new cart into the session
     $app['session']->set('cart', $cart);
