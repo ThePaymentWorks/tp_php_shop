@@ -6,7 +6,6 @@ use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
-
 require __DIR__.'/vendor/autoload.php';
 
 // Set the timezone
@@ -73,6 +72,7 @@ $app->post('/api/addtocart', function (Request $request) use ($app) {
   $product->name = $request->request->get('name');
   $product->price = $request->request->get('price');
   $product->quantity = $request->request->get('quantity');
+  $product->total = $request->request->get('price');
 
   if(null !== $app['session']->get('cart')) {
     // Get the current array
@@ -88,6 +88,7 @@ $app->post('/api/addtocart', function (Request $request) use ($app) {
       // Check for a matching existing product
       if ($value->name == $product->name) {
         $value->quantity += $product->quantity;
+        $value->total += $product->price;
 
         // Item found break out of the loop
         break;
@@ -115,6 +116,11 @@ $app->post('/api/addtocart', function (Request $request) use ($app) {
     // Return the new cart
     return $app->json($cart, 202);
   }
+});
+
+$app->post('/api/emptycart', function () use ($app) {
+  $app['session']->set('cart', null);
+  return 'Cart emptied';
 });
 
 $app->get('/checkout', function () use ($app) {});

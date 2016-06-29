@@ -1,18 +1,24 @@
 /* Styling for the example application */
 body {
-  background-color: #eeeeee;
+  background-color: #E0E4CC;
   min-height: 100vh;
 }
-
+hr {
+  border-top: 1px solid #e0e4cc;
+}
 /* Styling for components */
 .btn {
   border-radius: 0;
+  border: 0;
+}
+.btn-shadow {
+  box-shadow: 0 0 5px #888888;
 }
 /* Styling for the navbar */
 .navbar-default {
   height: 100vh;
   position: fixed;
-  background-color: #293846;
+  background-color: #FA6900;
 }
 .navbar-nav > li {
   text-align: center;
@@ -122,8 +128,9 @@ body {
   margin-top: 10%;
 }
 .cart-item {
-  border-right: 1px solid black;
-  border-left: 1px solid black;
+  background-color: #eeeeee;
+  border-right: 2px solid #F38630;
+  border-left: 2px solid #F38630;
   margin: 5px 0;
   box-shadow: 0 0 5px #888888;
   border-bottom: 0;

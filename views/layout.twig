@@ -21,8 +21,8 @@
               <p style="color:white;">Logo</p>
             </div>
             <li><a href="/">Store</a></li>
-            <li><a href="#">Checkout</a></li>
             <li><a href="/cart">Cart</a></li>
+            <li><a href="#">Checkout</a></li>
             <li><a href="#">About</a></li>
           </ul>
 
@@ -46,7 +46,7 @@
 
       <script type="text/javascript">
         // Add an item to the cart
-        $("button").on("click", function (event) {
+        $("#addToCart").on("click", function (event) {
           // Get the product information
           var data = $(this).data('content');
           data = data.split(",");
@@ -69,6 +69,20 @@
         });
       </script>
 
+      <script type="text/javascript">
+        // Add an item to the cart
+        $("#emptycart").on("click", function (event) {
+          // Add the item to the cart
+          $.ajax({
+            url: "/api/emptycart",
+            type: "POST",
+          }).done(function (res) {
+            console.log(res);
+          }).fail(function (err) {
+            console.log(err);
+          });
+        });
+      </script>
     {% endblock %}
 
   </body>
