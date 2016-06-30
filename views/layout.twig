@@ -42,7 +42,6 @@
       <script type="text/javascript">
         // Add an item to the cart
         $(".addToCart").on("click", function (event) {
-          console.log('Add to cart');
           // Get the product information
           var data = $(this).data('content');
           data = data.split(",");
@@ -58,7 +57,6 @@
             }
           }).done(function (res) {
             console.log(res);
-            // Update the cart icon/list/total using the returned values
           }).fail(function (err) {
             console.log(err);
           });
@@ -68,7 +66,6 @@
       <script type="text/javascript">
         // Add an item to the cart
         $("#emptycart").on("click", function (event) {
-          console.log('Hi');
           // Add the item to the cart
           $.ajax({
             url: "/api/emptycart",
@@ -79,6 +76,31 @@
             console.log(err);
           });
         });
+      </script>
+
+      <script type="text/javascript">
+        // Make a payment request
+        $("#checkout").on("click", function (event) {
+          // Get the form data
+          var formData = $('form').serializeArray();
+          // Send a request with the form data
+          $.ajax({
+            url: "/api/pay",
+            type: "POST",
+            data: {
+              cardHolder: formData[0].value,
+              cardNumber: formData[1].value,
+              expiryMonth: formData[2].value,
+              expiryYear: formData[3].value,
+              cvv: formData[4].value
+            }
+          }).done(function (res) {
+            console.log(res);
+          }).fail(function (err) {
+            console.log(err);
+          });
+
+        })
       </script>
     {% endblock %}
 

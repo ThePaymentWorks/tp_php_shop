@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
 require __DIR__.'/vendor/autoload.php';
+$config = include('config.php');
 
 // Set the timezone
 date_default_timezone_set('Europe/Dublin');
@@ -65,59 +66,55 @@ $app->get('/cart', function () use ($app) {
 });
 
 $app->get('/checkout', function () use ($app) {
+  // Render the template
+  return $app['twig']->render('checkout.twig', array(
+    'total' => $app['session']->get('total')
+  ));
+});
+
+// Make a request to the realex API
+$app->post('/api/pay', function (Request $request) use ($app, $config) {
+
+  // Get the data from the form
+  // $formData = $request->request->get('formData');
+  // return $formData;
+
+  // Create a gateway to make a request
   $gateway = Omnipay::create('Realex_Remote');
 
-  $gateway->setMerchantId(1);
-  $gateway->setAccount(2);
-  $gateway->setSecret(3);
+  $gateway->setMerchantId($config->realex_merchantId);
+  $gateway->setAccount($config->realex_account);
+  $gateway->setSecret($config->realex_secret);
 
   $formInputData = array(
     'firstName' => 'Bobby',
     'lastName' => 'Tables',
-    'number' => '4111111111111111',
+    'number' => $request->request->get('cardNumber'),
+    'cvv' => $request->request->get('cvv'),
+    'expiryMonth' => $request->request->get('expiryMonth'),
+    'expiryYear' => $request->request->get('expiryYear')
   );
+
   $card = new CreditCard($formInputData);
 
-  $response = $gateway->purchase(['amount' => 10.00, $card]);
-
-  print_r($settings = $gateway->getDefaultParameters());
   $response = $gateway->purchase([
-    'transactionId' => 1,
+    'transactionId' => uniqid(),
     'amount'        => 10.00,
-    'currency'      => 'USD',
+    'currency'      => 'EUR',
     'card'          => $card
   ])->send();
 
-  // [
-  //   'number' => 4242424242424242,
-  //   'expdate' => '0919',
-  //   'chname' => 'John Doe',
-  //   'cvn' => 222
-  // ]
-
   if ($response->isSuccessful()) {
       // payment was successful: update database
-      print_r($response);
+      return $response;
   } elseif ($response->isRedirect()) {
       // redirect to offsite payment gateway
       $response->redirect();
   } else {
       // payment failed: display message to customer
-      echo $response->getMessage();
+      return $response->getMessage();
   }
 
-  // $timestamp = strftime("%Y%m%d%H%M%S");
-  // $merchantId = $this->getMerchantId();
-  // $orderId = $this->getTransactionId();
-  // $amount = $this->getAmountInteger();
-  // $currency = $this->getCurrency();
-  // $cardNumber = $this->getCard()->getNumber();
-  // $secret = $this->getSecret();
-
-  // Render the template
-  return $app['twig']->render('checkout.twig', array(
-    'total' => $app['session']->get('total')
-  ));
 });
 
 // Add a product to the cart
