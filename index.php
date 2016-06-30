@@ -74,11 +74,6 @@ $app->get('/checkout', function () use ($app) {
 
 // Make a request to the realex API
 $app->post('/api/pay', function (Request $request) use ($app, $config) {
-
-  // Get the data from the form
-  // $formData = $request->request->get('formData');
-  // return $formData;
-
   // Create a gateway to make a request
   $gateway = Omnipay::create('Realex_Remote');
 
@@ -105,16 +100,15 @@ $app->post('/api/pay', function (Request $request) use ($app, $config) {
   ])->send();
 
   if ($response->isSuccessful()) {
-      // payment was successful: update database
-      return $response;
+    // payment was successful
+    return $response->getMessage();
   } elseif ($response->isRedirect()) {
-      // redirect to offsite payment gateway
-      $response->redirect();
+    // redirect to offsite payment gateway
+    return $response->redirect();
   } else {
-      // payment failed: display message to customer
-      return $response->getMessage();
+    // payment failed
+    return $response->getMessage();
   }
-
 });
 
 // Add a product to the cart
