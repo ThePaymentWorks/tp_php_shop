@@ -82,8 +82,8 @@ $app->post('/api/pay', function (Request $request) use ($app, $config) {
   $gateway->setSecret($config->realex_secret);
 
   $formInputData = array(
-    'firstName' => 'Bobby',
-    'lastName' => 'Tables',
+    'firstName' => $request->request->get('firstname'),
+    'lastName' => $request->request->get('lastname'),
     'number' => $request->request->get('cardNumber'),
     'cvv' => $request->request->get('cvv'),
     'expiryMonth' => $request->request->get('expiryMonth'),

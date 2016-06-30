@@ -7,11 +7,12 @@ $("#checkout").on("click", function (event) {
     url: "/api/pay",
     type: "POST",
     data: {
-      cardHolder: formData[0].value,
-      cardNumber: formData[1].value,
-      expiryMonth: formData[2].value,
-      expiryYear: formData[3].value,
-      cvv: formData[4].value
+      firstname: formData[0].value,
+      lastname: formData[1].value,
+      cardNumber: formData[2].value,
+      expiryMonth: formData[3].value,
+      expiryYear: formData[4].value,
+      cvv: formData[5].value
     }
   }).done(function (res) {
     // Create the new response item
