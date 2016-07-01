@@ -1,35 +1,41 @@
-// Make a payment request
-$("#checkout").on("click", function (event) {
+function checkout() {
   // Get the form data
   var formData = $('form').serializeArray();
-  // Send a request with the form data
-  $.ajax({
-    url: "/api/pay",
-    type: "POST",
-    data: {
-      firstname: formData[0].value,
-      lastname: formData[1].value,
-      cardNumber: formData[2].value,
-      expiryMonth: formData[3].value,
-      expiryYear: formData[4].value,
-      cvv: formData[5].value
-    }
-  }).done(function (res) {
-    // Create the new response item
-    var new_response = $("<div class='response-item'><h4>" + res + "</h4></div>").hide();
 
-    // Append the item to the responses div
-    $("#responses").append(new_response);
+  // Validate the credit card
+  var isValid = $('#cardNumber').validateCreditCard();
+  if (isValid.valid) {
+    // Send a request with the form data
+    $.ajax({
+      url: "/api/pay",
+      type: "POST",
+      data: {
+        firstname: formData[0].value,
+        lastname: formData[1].value,
+        cardNumber: formData[2].value,
+        expiryMonth: formData[3].value,
+        expiryYear: formData[4].value,
+        cvv: formData[5].value
+      }
+    }).done(function (res) {
+      // Create the new response item
+      var new_response = $("<div class='response-item'><h4>" + res + "</h4></div>").hide();
 
-    // Show the response
-    new_response.show('normal');
+      // Append the item to the responses div
+      $("#responses").append(new_response);
 
-    // After 10 seconds delete the object
-    setTimeout(function() {
-      new_response.hide('slow', function(){ $target.remove(); });
-    }, 15000);
+      // Show the response
+      new_response.show('normal');
 
-  }).fail(function (err) {
-    console.log(err);
-  });
-})
+      // After 10 seconds delete the object
+      setTimeout(function() {
+        new_response.hide('slow', function() { new_response.remove(); });
+      }, 15000);
+
+    }).fail(function (err) {
+      console.log(err);
+    });
+  } else {
+    console.log('Credit card not valid ');
+  }
+}

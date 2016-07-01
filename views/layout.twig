@@ -24,12 +24,11 @@
             <li><a href="/checkout">Checkout</a></li>
           </ul>
 
-          </div>
         </div>
       </div>
+    </div>
 
       {% block content %}{% endblock %}
-
 
     {% block javascripts %}
 
@@ -41,10 +40,16 @@
 
       <!-- jQuery form validation -->
       <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+      <script src="http://ajax.microsoft.com/ajax/jquery.validate/1.7/additional-methods.js"></script>
+
+      <!-- jQuery credit-card validation -->
+      <script src="/javascripts/PawelDecowski/jquery.creditCardValidator.js"></script>
 
       <script src="/javascripts/addToCart.js"></script>
       <script src="/javascripts/checkout.js"></script>
       <script src="/javascripts/emptycart.js"></script>
+      <script src="/javascripts/validation.js"></script>
+
 
     {% endblock %}
 

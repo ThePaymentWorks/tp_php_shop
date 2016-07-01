@@ -14,44 +14,44 @@
       </div>
       <div class="row">
         <div class="col-sm-10">
-          <form id="checkout-form" class="form-horizontal">
+          <form id="checkout-form" class="form-horizontal" onsubmit="return false">
 
             <div class="form-group">
               <label for="card-holder" class="control-label col-sm-3">Firstname</label>
               <div class="col-sm-6">
-                <input class="form-control" name="cardHolder" placeholder="John" value="John">
+                <input class="form-control" name="firstname" placeholder="John" type="text" id="firstname" placeholder="John" required >
               </div>
             </div>
 
             <div class="form-group">
               <label for="card-holder" class="control-label col-sm-3">Lastname</label>
               <div class="col-sm-6">
-                <input class="form-control" name="cardHolder" placeholder="Doe" value="Doe">
+                <input class="form-control" name="lastname" placeholder="Doe" value="Doe" type="text" required>
               </div>
             </div>
 
             <div class="form-group">
               <label for="card-Number" class="control-label col-sm-3">Card Number</label>
               <div class="col-sm-6">
-                <input class="form-control" name="cardNumber" placeholder="e.g. 4319 5046 8156 3245" value="4263970000005262">
+                <input id="cardNumber" class="form-control" name="cardNumber" placeholder="e.g. 4319 5046 8156 3245" value="4263970000005262"  required>
               </div>
             </div>
 
             <div class="form-group">
               <label for="expiry-date" class="control-label col-sm-3">Expiry Month</label>
               <div class="col-sm-2">
-                <input class="form-control" name="expiry-month" placeholder="MM" value="06">
+                <input class="form-control" name="expiryMonth" placeholder="MM" value="06" required>
               </div>
               <label for="expiry-date" class="control-label col-sm-2">Expiry Year</label>
               <div class="col-sm-2">
-                <input class="form-control" name="expiry-year" placeholder="YYYY" value="2021">
+                <input class="form-control" name="expiryYear" placeholder="YYYY" value="2021" required>
               </div>
             </div>
 
             <div class="form-group">
               <label for="cvv" class="control-label col-sm-3">CVV</label>
               <div class="col-sm-2">
-                <input class="form-control" name="cvv" placeholder="000" value="222">
+                <input class="form-control" name="cvv" placeholder="000" value="222" required>
               </div>
             </div>
 
@@ -67,7 +67,7 @@
             <div class="form-group">
               <div class="col-sm-3"></div>
               <div class="col-sm-6">
-                <button id="checkout" type="button" class="btn btn-primary btn-block">Checkout</button>
+                <button id="checkout" type="Submit" class="btn btn-primary btn-block">Checkout</button>
               </div>
             </div>
           </form>
