@@ -51,7 +51,7 @@
       cvv: {
         required: true,
         minlength: 3,
-        maxlength: 3,
+        maxlength: 4,
       }
     },
     messages: {
