@@ -137,9 +137,6 @@ hr {
 }
 
 /* Styling for the cart page  */
-.cart-title {
-  margin-top: 10%;
-}
 .cart-item {
   background-color: #eeeeee;
   border-right: 2px solid #F38630;
