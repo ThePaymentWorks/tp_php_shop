@@ -27,7 +27,7 @@ function createResponse (rawXML) {
             + "<p>Message : " + $xml.find('message').text() + "</p>"
             + "<p>CVN Result : " + $xml.find('cvnresult').text() + "</p>"
             + "<p>Batch ID : " + $xml.find('batchid').text() + "</p>"
-            + "<p>Auth Code : " + $xml.find('batchid').text() + "</p>"
+            + "<p>Auth Code : " + $xml.find('authcode').text() + "</p>"
           + "</div>"
         + "</div>"
       + "</div>"
