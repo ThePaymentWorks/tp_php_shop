@@ -101,7 +101,7 @@ $app->post('/api/pay', function (Request $request) use ($app, $config) {
 
   if ($response->isSuccessful()) {
     // payment was successful
-    return $response->getMessage();
+    return $response->getXML();
   } elseif ($response->isRedirect()) {
     // redirect to offsite payment gateway
     return $response->redirect();
