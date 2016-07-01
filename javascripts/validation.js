@@ -10,6 +10,11 @@
     return (parseInt(value) > 0 && parseInt(value) < 12);
   }, "* Month must be valid (MM)");
 
+  jQuery.validator.addMethod("validYear", function(value, element) {
+    const date = new Date();
+    return parseInt(value) >= date.getFullYear();
+  }, "* Please enter a year starting with the current year");
+
   // Set the rules for all of the forms fields
   $('form').validate({
     rules: {
@@ -41,6 +46,7 @@
         required: true,
         minlength: 4,
         maxlength: 4,
+        validYear: true
       },
       cvv: {
         required: true,
