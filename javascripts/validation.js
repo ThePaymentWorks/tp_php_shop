@@ -1,10 +1,16 @@
 (function () {
 
+  // Custom rule to ensure that the credit card is valid
   jQuery.validator.addMethod("validCard", function(value, element) {
     var isValid = $('#cardNumber').validateCreditCard();
     return isValid.valid;
   }, "* Card number must be valid");
 
+  jQuery.validator.addMethod("validMonth", function(value, element) {
+    return (parseInt(value) > 0 && parseInt(value) < 12);
+  }, "* Month must be valid (MM)");
+
+  // Set the rules for all of the forms fields
   $('form').validate({
     rules: {
       firstname: {
@@ -29,6 +35,7 @@
         required: true,
         minlength: 2,
         maxlength: 2,
+        validMonth: true
       },
       expiryYear: {
         required: true,
