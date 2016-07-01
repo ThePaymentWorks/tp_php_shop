@@ -12,7 +12,7 @@ function createResponse (rawXML) {
   }
 
   const new_resp = $(
-     "<div class='panel-group " + style + "'>"
+     "<div class='panel-group remove " + style + "'>"
       + "<div class='panel panel-default'>"
         + "<div class='panel-heading'>"
           + "<h4 class='panel-title'>"
@@ -20,7 +20,9 @@ function createResponse (rawXML) {
             + "<a data-toggle='collapse' href='#" + $xml.find('orderid').text() + "'>"
               + "Result Code : " + $xml.find('result').text()
             + "</a>"
+            + "<span onClick='removeResponse()' class='glyphicon glyphicon-remove remove-response' aria-hidden='true'></span>"
           + "</h4>"
+
         + "</div>"
         + "<div id='" + $xml.find('orderid').text() + "' class='panel-collapse collapse'>"
           + "<div class='panel-body'>"
@@ -38,9 +40,13 @@ function createResponse (rawXML) {
 
   // Show the response
   new_resp.show('normal');
+}
 
-  // After 10 seconds delete the object
-  setTimeout(function() {
-    new_resp.hide('slow', function() { new_resp.remove(); });
-  }, 150000);
+function removeResponse () {
+  $('.remove-response').on('click', function (event) {
+    const parent = $(this).closest('.remove')
+    parent.hide('slow', function () {
+      parent.remove();
+    });
+  });
 }
