@@ -107,7 +107,7 @@ $app->post('/api/pay', function (Request $request) use ($app, $config) {
     return $response->redirect();
   } else {
     // payment failed
-    return $response->getMessage();
+    return $response->getXML();
   }
 });
 
