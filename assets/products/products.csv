@@ -1,4 +1,7 @@
-Mug,mug,4
-Cup,cup,3
-Plate,plate,6
-Testing Pays,testing-pays,100000000
+Mug,mug,4.1
+Cup,cup,3.5
+Plate,plate,6.25
+Fork,fork,0.3
+Knife,knife,0.45
+Spoon,spoon,0.24
+teaspoon,teaspoon,0.1
