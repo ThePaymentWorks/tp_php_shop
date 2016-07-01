@@ -11,6 +11,16 @@
 
   --secondary-background: white;
   --danger: #DA3B37;
+
+  --error-column-color: #D92626;
+  --error-header-color: #EC9393;
+  --error-body-color: #F2B3B3;
+  --error-text: #7A1200;
+
+  --success-column-color: #00BF86;
+  --success-header-color: #2CEFC0;
+  --success-body-color: #80F5D4;
+  --success-text: #3B6264;
 }
 
 /* General styling */
@@ -50,8 +60,22 @@ h4 {
   background-color: var(--primary-color);
   color: var(--text-color);
 }
+.btn-primary:hover {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+.btn-primary:focus {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
 .btn-secondary {
   background-color: var(--secondary-color);
+  color: var(--text-color);
+}
+.btn-secondary:hover {
+  color: var(--text-color);
+}
+.btn-secondary:focus {
   color: var(--text-color);
 }
 .btn-danger {
@@ -201,4 +225,36 @@ h4 {
   padding: 5px 15px;
   box-shadow: 0 0 5px var(--shadow);
   border-bottom: 0;
+}
+/* Classes added to the response panel */
+
+.success > .panel-default {
+  border-color: var(--success-column-color);
+}
+.success > .panel-default > .panel-heading  {
+  background-color: var(--success-header-color);
+  color: var(--success-text);
+}
+.success > .panel-default > .panel-heading + .panel-collapse > .panel-body {
+  background-color: var(--success-body-color);
+  border-color: var(--success-body-color);
+  color: var(--success-text);
+}
+
+.error > .panel-default {
+  border-color: var(--error-column-color);
+}
+.error > .panel-default > .panel-heading  {
+  background-color: var(--error-header-color);
+  color: var(--error-text);
+}
+.error > .panel-default > .panel-heading + .panel-collapse > .panel-body {
+  background-color: var(--error-body-color);
+  border-color: var(--error-body-color);
+  color: var(--error-text);
+}
+
+.glyphicon {
+  margin-right: 10px;
+  padding: 0;
 }
