@@ -1,7 +1,10 @@
 function checkout() {
   // Get the form data
   var formData = $('form').serializeArray();
-  console.log(formData);
+
+  // Get the selected Currency
+  const currency = $('#currencyDropDown').val();
+
   // Send a request with the form data
   $.ajax({
     url: "/api/pay",
@@ -13,12 +16,13 @@ function checkout() {
       expiryMonth: formData[3].value,
       expiryYear: formData[4].value,
       cvv: formData[5].value,
-      api: formData[6].value
+      api: formData[6].value,
+      currency: currency
     }
   }).done(function (res) {
     // Create the new response item
     createResponse(res);
   }).fail(function (err) {
     console.log(err);
-    });
+  });
 }
