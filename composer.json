@@ -2,11 +2,11 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "git@github.com:TheProductWorks/omnipay-realex"
+      "url": "git@github.com:ThePaymentWorks/omnipay-realex"
     }
   ],
   "require": {
-    "coatesap/omnipay-realex": "dev-dev-testing-pays",
+    "coatesap/omnipay-realex": "dev-testing-pays",
     "twig/twig": "~1.0",
     "silex/silex": "~1.1"
   }
