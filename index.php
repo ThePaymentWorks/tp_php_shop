@@ -77,9 +77,21 @@ $app->post('/api/pay', function (Request $request) use ($app, $config) {
   // Create a gateway to make a request
   $gateway = Omnipay::create('Realex_Remote');
 
-  $gateway->setMerchantId($config->realex_merchantId);
-  $gateway->setAccount($config->realex_account);
-  $gateway->setSecret($config->realex_secret);
+  // $gateway->getEndpoint();
+
+  // Check which api the user wants to use
+  if($request->request->get('api') == 'testingpays') {
+    // Set the default testingpays api settings
+    $gateway->setEndpoint($config->testingpays_endpoint);
+    $gateway->setMerchantId($config->testingpays_merchantId);
+    $gateway->setAccount($config->testingpays_account);
+    $gateway->setSecret($config->testingpays_secret);
+  } else {
+    // Set the default realex api settings
+    $gateway->setMerchantId($config->realex_merchantId);
+    $gateway->setAccount($config->realex_account);
+    $gateway->setSecret($config->realex_secret);
+  }
 
   $formInputData = array(
     'firstName' => $request->request->get('firstname'),
@@ -94,7 +106,7 @@ $app->post('/api/pay', function (Request $request) use ($app, $config) {
 
   $response = $gateway->purchase([
     'transactionId' => uniqid(),
-    'amount'        => 10.00,
+    'amount'        => $app['session']->get('total'),
     'currency'      => 'EUR',
     'card'          => $card
   ])->send();

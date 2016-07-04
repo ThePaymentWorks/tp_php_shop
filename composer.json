@@ -1,8 +1,8 @@
 {
   "repositories": [
     {
-    "type": "vcs",
-    "url": "git@github.com:TheProductWorks/omnipay-realex"
+      "type": "vcs",
+      "url": "git@github.com:TheProductWorks/omnipay-realex"
     }
   ],
   "require": {

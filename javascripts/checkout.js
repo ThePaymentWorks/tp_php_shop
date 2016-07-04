@@ -1,7 +1,7 @@
 function checkout() {
   // Get the form data
   var formData = $('form').serializeArray();
-
+  console.log(formData);
   // Send a request with the form data
   $.ajax({
     url: "/api/pay",
@@ -12,7 +12,8 @@ function checkout() {
       cardNumber: formData[2].value,
       expiryMonth: formData[3].value,
       expiryYear: formData[4].value,
-      cvv: formData[5].value
+      cvv: formData[5].value,
+      api: formData[6].value
     }
   }).done(function (res) {
     // Create the new response item
