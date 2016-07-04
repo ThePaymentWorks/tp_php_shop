@@ -5,6 +5,9 @@ function checkout() {
   // Get the selected Currency
   const currency = $('#currencyDropDown').val();
 
+  // Get the current total
+  const total = $('#total').val();
+
   // Send a request with the form data
   $.ajax({
     url: "/api/pay",
@@ -17,6 +20,7 @@ function checkout() {
       expiryYear: formData[4].value,
       cvv: formData[5].value,
       api: formData[6].value,
+      total: total,
       currency: currency
     }
   }).done(function (res) {

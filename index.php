@@ -104,7 +104,7 @@ $app->post('/api/pay', function (Request $request) use ($app, $config) {
 
   $response = $gateway->purchase([
     'transactionId' => uniqid(),
-    'amount'        => $app['session']->get('total'),
+    'amount'        => $request->request->get('total'),
     'currency'      => $request->request->get('currency'),
     'card'          => $card
   ])->send();
