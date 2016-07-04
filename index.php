@@ -77,8 +77,6 @@ $app->post('/api/pay', function (Request $request) use ($app, $config) {
   // Create a gateway to make a request
   $gateway = Omnipay::create('Realex_Remote');
 
-  // $gateway->getEndpoint();
-
   // Check which api the user wants to use
   if($request->request->get('api') == 'testingpays') {
     // Set the default testingpays api settings
