@@ -2,7 +2,7 @@
 
   // Custom rule to ensure that the credit card is valid
   jQuery.validator.addMethod("validCard", function(value, element) {
-    const isValid = $('#cardNumber').validateCreditCard();
+    var isValid = $('#cardNumber').validateCreditCard();
     return isValid.valid;
   }, "* Card number must be valid");
 
@@ -11,14 +11,14 @@
   }, "* Month must be valid (MM)");
 
   jQuery.validator.addMethod("validMonthAndYear", function(value, element) {
-    const year = parseInt($('#expiryYear').val());
-    const month = parseInt($('#expiryMonth').val());
-    const date = new Date();
+    var year = parseInt($('#expiryYear').val());
+    var month = parseInt($('#expiryMonth').val());
+    var date = new Date();
     return (year > date.getFullYear() || (year >= date.getFullYear() && month > date.getMonth()));
   }, "* You must select a month and year which are valid");
 
   jQuery.validator.addMethod("validYear", function(value, element) {
-    const date = new Date();
+    var date = new Date();
     return parseInt(value) >= date.getFullYear();
   }, "* Please enter a year starting with the current year");
 

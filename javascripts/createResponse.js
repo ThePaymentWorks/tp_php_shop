@@ -1,14 +1,17 @@
 function createResponse (rawXML) {
+  // Get the XML response and parse it 
   const xmldoc = $.parseXML(rawXML);
   const $xml = $(xmldoc);
   const result = $xml.find('result');
+  
+  var style, icon;
 
   if ($xml.find('result').text() == '00') {
-    var style = 'success';
-    var icon = 'ok';
+    style = 'success';
+    icon = 'ok';
   } else {
-    var style = 'error';
-    var icon = 'remove';
+    style = 'error';
+    icon = 'remove';
   }
 
   const new_resp = $(
@@ -40,11 +43,14 @@ function createResponse (rawXML) {
 
   // Show the response
   new_resp.show('normal');
+
+  // Show the functional user response 
+  createFunctionalResponse($xml.find('result').text());
 }
 
 function removeResponse () {
   $('.remove-response').on('click', function (event) {
-    const parent = $(this).closest('.remove')
+    const parent = $(this).closest('.remove');
     parent.hide('slow', function () {
       parent.remove();
     });

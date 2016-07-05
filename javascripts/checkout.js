@@ -3,10 +3,10 @@ function checkout() {
   var formData = $('form').serializeArray();
 
   // Get the selected Currency
-  const currency = $('#currencyDropDown').val();
+  var currency = $('#currencyDropDown').val();
 
   // Get the current total
-  const total = $('#total').val();
+  var total = $('#total').val();
 
   // Send a request with the form data
   $.ajax({
