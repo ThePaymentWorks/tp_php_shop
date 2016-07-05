@@ -1,8 +1,8 @@
 function createResponse (rawXML) {
   // Get the XML response and parse it 
-  const xmldoc = $.parseXML(rawXML);
-  const $xml = $(xmldoc);
-  const result = $xml.find('result');
+  var xmldoc = $.parseXML(rawXML);
+  var $xml = $(xmldoc);
+  var result = $xml.find('result');
   
   var style, icon;
 
@@ -14,7 +14,7 @@ function createResponse (rawXML) {
     icon = 'remove';
   }
 
-  const new_resp = $(
+  var new_resp = $(
      "<div class='panel-group remove " + style + "'>"
       + "<div class='panel panel-default'>"
         + "<div class='panel-heading'>"
@@ -50,7 +50,7 @@ function createResponse (rawXML) {
 
 function removeResponse () {
   $('.remove-response').on('click', function (event) {
-    const parent = $(this).closest('.remove');
+    var parent = $(this).closest('.remove');
     parent.hide('slow', function () {
       parent.remove();
     });
