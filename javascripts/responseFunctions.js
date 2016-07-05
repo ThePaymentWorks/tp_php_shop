@@ -19,4 +19,6 @@ function currency (currency) {
 function otherProcessor () {
   // Dummy message for paying with paypal (another payment processor)
 }
-
+function retry () {
+  // Re-submit the form ensuring a success message
+}
