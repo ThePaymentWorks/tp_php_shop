@@ -1,9 +1,8 @@
 function createResponse (rawXML) {
-  // Get the XML response and parse it 
+  // Get the XML response and parse it
   var xmldoc = $.parseXML(rawXML);
   var $xml = $(xmldoc);
   var result = $xml.find('result');
-  
   var style, icon;
 
   if ($xml.find('result').text() == '00') {
@@ -14,6 +13,7 @@ function createResponse (rawXML) {
     icon = 'remove';
   }
 
+  // TODO : Move to using `` backticks to eval html
   var new_resp = $(
      "<div class='panel-group remove " + style + "'>"
       + "<div class='panel panel-default'>"
@@ -44,7 +44,7 @@ function createResponse (rawXML) {
   // Show the response
   new_resp.show('normal');
 
-  // Show the functional user response 
+  // Show the functional user response
   createFunctionalResponse($xml.find('result').text());
 }
 
