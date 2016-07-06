@@ -6,7 +6,9 @@ $("#emptycart").on("click", function (event) {
     type: "POST",
   }).done(function (res) {
     console.log(res);
+    location.reload();
   }).fail(function (err) {
     console.log(err);
+    alert('Error emptying the cart, please try again');
   });
 });
