@@ -27,6 +27,7 @@ function checkout() {
     // Create the new response item
     createResponse(res);
   }).fail(function (err) {
+    createFunctionalResponse('timeout')
     console.log(err);
   });
 }
