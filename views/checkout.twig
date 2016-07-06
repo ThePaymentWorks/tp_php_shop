@@ -19,14 +19,14 @@
             <div class="form-group">
               <label for="card-holder" class="control-label col-sm-3">Firstname</label>
               <div class="col-sm-6">
-                <input class="form-control" name="firstname" placeholder="John" type="text" id="firstname" placeholder="John" value="John" required >
+                <input id="firstname" class="form-control" name="firstname" placeholder="John" type="text" id="firstname" placeholder="John" value="John" required >
               </div>
             </div>
 
             <div class="form-group">
               <label for="card-holder" class="control-label col-sm-3">Lastname</label>
               <div class="col-sm-6">
-                <input class="form-control" name="lastname" placeholder="Doe" value="Doe" type="text" required>
+                <input id="lastname" class="form-control" name="lastname" placeholder="Doe" value="Doe" type="text" required>
               </div>
             </div>
 
@@ -51,30 +51,30 @@
             <div class="form-group">
               <label for="cvv" class="control-label col-sm-3">CVV</label>
               <div class="col-sm-2">
-                <input class="form-control" name="cvv" placeholder="000" value="222" required>
+                <input id="cvv" class="form-control" name="cvv" placeholder="000" value="222" required>
               </div>
             </div>
 
             <div class="form-group">
               <label for="processor" class="control-label col-sm-3">Checkout with</label>
               <div class="col-sm-6">
-                <label class="radio-inline col-sm-5"><input type="radio" name="radioButton" checked="checked" value="realex">Realex</label>
-                <label class="radio-inline col-sm-5"><input type="radio" name="radioButton" value="testingpays">Testing Pays</label>
+                <label id="radioRealex" class="radio-inline col-sm-5"><input type="radio" name="radioButton" checked="checked" value="realex">Realex</label>
+                <label id="radioTestingPays" class="radio-inline col-sm-5"><input type="radio" name="radioButton" value="testingpays">Testing Pays</label>
               </div>
             </div>
 
             <div class="form-group">
               <label for="currency" class="control-label col-sm-3">Currency</label>
-              <div class="dropdown col-sm-6">
+              <div id="dropdown" class="dropdown col-sm-6">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="currencyDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" value="EUR">
                   EUR
                   <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                  <li><a href="#">EUR</a></li>
-                  <li><a href="#">GBP</a></li>
-                  <li><a href="#">USD</a></li>
-                  <li><a href="#">RUB</a></li>
+                  <li><a id="EUR" href="#">EUR</a></li>
+                  <li><a id="GBP" href="#">GBP</a></li>
+                  <li><a id="USD" href="#">USD</a></li>
+                  <li><a id="RUB" href="#">RUB</a></li>
                 </ul>
               </div>
             </div>
