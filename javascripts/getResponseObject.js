@@ -33,7 +33,7 @@ function getResponseObject (resultCode) {
     'checkoutmessage': 'We\'re sorry but your bank has declined your transaction. Please confirm your card CVV and expiry date, then try again.',
     'checkoutOptions': {
       'Cancel': '"rest()"',
-      'Review Detail': "highlight(['cvv', 'expiryMonth', 'expiryYear'])"
+      'Review Detail': "highlight([cvv, expiryMonth, expiryYear])"
     }
   });
 
@@ -155,10 +155,10 @@ function getResponseObject (resultCode) {
     'checkoutmessage': 'We\'re sorry, that item is not available to buy in that currency. You can complete your purchase using one of our alternatives.',
     'checkoutOptions': {
       'Cancel': "rest()",
-      'EUR': "currency('EUR')",
-      'GBP': "currency('GBP')",
-      'USD': "currency('USD')",
-      'RUB': "currency('RUB')"
+      'EUR': "currency(EUR)",
+      'GBP': "currency(GBP)",
+      'USD': "currency(USD)",
+      'RUB': "currency(RUB)"
     }
   });
 
@@ -169,7 +169,7 @@ function getResponseObject (resultCode) {
     'checkoutmessage': 'We\'re sorry, we could not process your card request. Please verify the card expiry date on your card and retry.',
     'checkoutOptions': {
       'Cancel': "rest()",
-      'Verify Expiry': "highlight(['expiryMonth','expiryYear'])"
+      'Verify Expiry': "highlight([expiryMonth, expiryYear])"
     }
   });
 
@@ -180,7 +180,7 @@ function getResponseObject (resultCode) {
     'checkoutmessage': 'We\'re sorry, we could not process your card request. Please verify the cardholder name and retry.',
     'checkoutOptions': {
       'Cancel': "rest()",
-      'Verify Name': "highlight(['firstName','lastName'])"
+      'Verify Name': "highlight([firstName, lastName])"
     }
   });
 
@@ -192,7 +192,7 @@ function getResponseObject (resultCode) {
     'checkoutmessage': 'We\'re sorry, we could not process your card request. Please verify the card CVV and retry.',
     'checkoutOptions': {
       'Cancel': "rest()",
-      'Re-enter CVV': "highlight(['cvv'])"
+      'Re-enter CVV': "highlight([cvv])"
     }
   });
 
@@ -203,7 +203,7 @@ function getResponseObject (resultCode) {
     'checkoutmessage': 'Warning, there was a problem verifying your CVV. Do you wish to complete the purchase without verifying CVV?',
     'checkoutOptions': {
       'Cancel': "rest()",
-      'Re-enter CVV': "highlight(['cvv'])"
+      'Re-enter CVV': "highlight([cvv])"
     }
   });
 
