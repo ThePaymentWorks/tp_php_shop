@@ -26,6 +26,43 @@ function highlight (array) {
 
 function contactUs () {
   // Probably just call rest? Look into the intercom integration
+  var contact_modal = $(
+    `<div class="modal" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content" style="background-color:#f5f5f5">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-8">
+                <img class="intercom-image" style="padding:40px" src="/assets/images/intercom.jpg">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 text-center">
+              <h4>Hi! How can I help?</h4>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>`
+  ).appendTo('body');
+
+  // If the modal already exists replace it, else append modal to the body
+  if ($('body').children(".modal").length === 0) {
+    $('body').append(contact_modal);
+  } else {
+    $('body').children(".modal").replaceWith(contact_modal);
+  }
+
+  // Show the response
+  contact_modal.hide().fadeIn(500);
+
+  $('.dismiss').click(function(e){
+    contact_modal.hide();
+  });
 }
 
 function currency (currency) {
