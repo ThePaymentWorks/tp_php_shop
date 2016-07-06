@@ -7,7 +7,6 @@ function createFunctionalResponse (resultCode) {
 
   // Loop through all of the checkout Options and set the buttons
   Object.keys(response.checkoutOptions).forEach(function (key) {
-    console.log(response.checkoutOptions);
     buttons = buttons.concat(`<button type="button" onClick='${response.checkoutOptions[key]}' class="btn btn-default dismiss ${key}" data-dismiss="modal">${key}</button>`);
   });
 
