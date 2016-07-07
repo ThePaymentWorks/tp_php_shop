@@ -93,6 +93,7 @@ h4 {
 }
 .navbar-default {
   border: 0;
+  border-right: 2px solid var(--secondary-color);
   border-radius: 0;
   min-width: 150px;
 }
