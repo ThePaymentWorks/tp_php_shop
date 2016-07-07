@@ -186,7 +186,7 @@ function getResponseObject (resultCode) {
 
 
   responses.push({
-    'code': '101',
+    'code': '101N',
     'responseCode': '101_cvv_not_match',
     'description': 'A failed transaction specifically meaning: CVV Not Matched.',
     'checkoutmessage': 'We\'re sorry, we could not process your card request. Please verify the card CVV and retry.',
@@ -197,7 +197,7 @@ function getResponseObject (resultCode) {
   });
 
   responses.push({
-    'code': '101',
+    'code': '101I',
     'responseCode': '101_cvv_not_checked',
     'description': 'A failed transaction specifically meaning: CVV Not checked due to circumstances.',
     'checkoutmessage': 'Warning, there was a problem verifying your CVV. Do you wish to complete the purchase without verifying CVV?',
@@ -208,7 +208,7 @@ function getResponseObject (resultCode) {
   });
 
   responses.push({
-    'code': '101',
+    'code': '101U',
     'responseCode': '101_cvv_issuer_no_cert',
     'description': 'A failed transaction specifically meaning: CVV Issuer not certified.',
     'checkoutmessage': 'We\'re sorry, we could not process your card request. Your card issuer does not support CVV codes - we cannot accept such cards.',
@@ -219,7 +219,7 @@ function getResponseObject (resultCode) {
   });
 
   responses.push({
-    'code': '101',
+    'code': '101P',
     'responseCode': '101_cvv_not_processed',
     'description': 'A failed transaction specifically meaning: CVV Not processed.',
     'checkoutmessage': 'We\'re sorry, we could not process your card request. Your card issuer does not support CVV codes - we cannot accept such cards.',

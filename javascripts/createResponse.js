@@ -2,10 +2,10 @@ function createResponse (rawXML) {
   // Get the XML response and parse it
   var xmldoc = $.parseXML(rawXML);
   var $xml = $(xmldoc);
-  var result = $xml.find('result');
+  var result = $xml.find('result').text();
   var style, icon;
 
-  if ($xml.find('result').text() == '00') {
+  if (result == '00') {
     style = 'success';
     icon = 'ok';
   } else {
@@ -21,7 +21,7 @@ function createResponse (rawXML) {
           + "<h4 class='panel-title'>"
             + "<span class='glyphicon glyphicon-" + icon + "' aria-hidden='true'></span>"
             + "<a data-toggle='collapse' href='#" + $xml.find('orderid').text() + "'>"
-              + "Result Code : " + $xml.find('result').text()
+              + "Result Code : " + result
             + "</a>"
             + "<span onClick='removeResponse()' class='glyphicon glyphicon-remove remove-response' aria-hidden='true'></span>"
           + "</h4>"
@@ -44,8 +44,13 @@ function createResponse (rawXML) {
   // Show the response
   new_resp.show('normal');
 
+  // Check if the response is a different version of a 101 response
+  if ($xml.find('cvnresult').text() !== 'M') {
+    result = result.concat($xml.find('cvnresult').text());
+  }
+
   // Show the functional user response
-  createFunctionalResponse($xml.find('result').text());
+  createFunctionalResponse(result);
 }
 
 function removeResponse () {
