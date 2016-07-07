@@ -69,6 +69,9 @@ function currency (currency) {
   // Change the value of the currency field to the selected currency
   $(".dropdown").find('.btn').html(currency.textContent + ' <span class="caret"></span>');
   $(".dropdown").find('.btn').val(currency.textContent);
+
+  // Update the converted currency
+  convertedTotal();
 }
 
 // Dummy message for paying with paypal (another payment processor)
