@@ -109,14 +109,11 @@ $app->post('/api/pay', function (Request $request) use ($app, $config) {
     'card'          => $card
   ])->send();
 
-  if ($response->isSuccessful()) {
-    // payment was successful
-    return $response->getXML();
-  } elseif ($response->isRedirect()) {
+  if ($response->isRedirect()) {
     // redirect to offsite payment gateway
     return $response->redirect();
   } else {
-    // payment failed
+    // Get the XML response
     return $response->getXML();
   }
 });

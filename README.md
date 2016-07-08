@@ -56,14 +56,11 @@ $response = $gateway->purchase([
   'card'          => $card
 ])->send();
 
-if ($response->isSuccessful()) {
-  // payment was successful, get the xml response
-  return $response->getXML();
-} elseif ($response->isRedirect()) {
+if ($response->isRedirect()) {
   // redirect to offsite payment gateway
   return $response->redirect();
 } else {
-  // payment failed, get the xml response
+  // get the xml response
   return $response->getXML();
 }
 ```
