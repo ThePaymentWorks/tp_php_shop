@@ -49,12 +49,12 @@ $formInputData = array(
 // Create a card from the form input data
 $card = new CreditCard($formInputData);
 
-$response = $gateway->purchase([
+$response = $gateway->purchase(array()
   'transactionId' => uniqid(), // A unique id
   'amount'        => '123',
   'currency'      => 'EUR', // 'USD', 'GBP' ect
   'card'          => $card
-])->send();
+))->send();
 
 if ($response->isRedirect()) {
   // redirect to offsite payment gateway
