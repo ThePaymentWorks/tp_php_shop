@@ -102,12 +102,12 @@ $app->post('/api/pay', function (Request $request) use ($app, $config) {
 
   $card = new CreditCard($formInputData);
 
-  $response = $gateway->purchase([
+  $response = $gateway->purchase(array(
     'transactionId' => uniqid(),
     'amount'        => $request->request->get('total'),
     'currency'      => $request->request->get('currency'),
     'card'          => $card
-  ])->send();
+  ))->send();
 
   if ($response->isRedirect()) {
     // redirect to offsite payment gateway
