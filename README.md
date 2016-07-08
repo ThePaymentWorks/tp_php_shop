@@ -16,15 +16,15 @@ Once inside the apps directory run this command
 This will launch the application which you can see at [localhost:8001](http://localhost:8001/).
 
 
-#### Integrating with Testing Pays
-In order to integrate with realex we will use our [fork of omnipay-realex](https://github.com/ThePaymentWorks/omnipay-realex). Using this library it is possible to use both Testing Pays and Realex at once. In order to switch between them simply change the configuration settings as shown in the below example.
+#### Integrating with Realex / Testing Pays
+In order to integrate with Realex we will use a [fork of omnipay-realex](https://github.com/ThePaymentWorks/omnipay-realex). This allows us to use both Testing Pays and Realex at once. In order to switch between them simply change the configuration settings as shown in the below example.
 
 ```js
 // Create a gateway to make a request
 $gateway = Omnipay::create('Realex_Remote');
 
-// Check which api the user wants to use
-if($request->request->get('api') == 'testingpays') {
+// Choose an API to use
+if(useTestingPays) {
   // Set the default testingpays api settings
   $gateway->setEndpoint($config->testingpays_endpoint);
   $gateway->setMerchantId($config->testingpays_merchantId);
