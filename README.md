@@ -72,13 +72,13 @@ if ($response->isSuccessful()) {
 #### Customizing the shop
 
 ##### Products & Images
-The details for products and their images are stored within the products.csv file found [here](assets/products/products.csv). The columns are organized as follows. Note that the images are all .JPG files, this section is added within the `<img>` tag.
+The details for products and their images are stored within the products.csv file found [here](assets/products/products.csv). The columns are organized as follows.
 
 |Product Name|Product Image Name|Price|
 |---|---|---|
-|Mug|mug|4.1|
-|Cup|cup|3.5|
-|Plate|plate|6.25|
+|Mug|mug.jpg|4.1|
+|Cup|cup.jpg|3.5|
+|Plate|plate.jpg|6.25|
 
 ##### Styling
 In order to style the application you can change the theme colors
