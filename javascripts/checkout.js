@@ -6,7 +6,7 @@ function checkout() {
   var currency = $('#currencyDropDown').val();
 
   // Get the current total
-  var total = $('#total').val();
+  var total = parseFloat($('#total').val()).toFixed(2);
 
   // Send a request with the form data
   $.ajax({
