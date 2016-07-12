@@ -20,7 +20,6 @@ function createFunctionalResponse (resultCode) {
             <h4 class="modal-title">${response.description}</h4>
           </div>
           <div class="modal-body">
-            <p>${response.responseCode}</p>
             <p>${response.checkoutmessage}</p>
           </div>
           <div class="modal-footer">
