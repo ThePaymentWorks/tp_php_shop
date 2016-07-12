@@ -63,9 +63,17 @@
             </div>
 
 
+
+            <div class="form-group">
+              <label for="total" class="control-label col-sm-3">Total</label>
+              <div class="col-sm-3">
+                <input id="total" step="0.01" class="form-control" name="total" placeholder="${{total}}" value="{{total}}" type="number" required>
+              </div>
+            </div>
+
             <div class="form-group">
               <label for="currency" class="control-label col-sm-3">Currency</label>
-              <div id="dropdown" class="dropdown col-sm-6">
+              <div id="dropdown" class="dropdown col-sm-2">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="currencyDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" value="EUR">
                   EUR
                   <span class="caret"></span>
@@ -77,16 +85,7 @@
                   <li><a id="RUB" href="#">RUB</a></li>
                 </ul>
               </div>
-            </div>
 
-            <div class="form-group">
-              <label for="total" class="control-label col-sm-3">Total</label>
-              <div class="col-sm-2">
-                <input id="total" step="0.01" class="form-control" name="total" placeholder="${{total}}" value="{{total}}" type="number" required>
-              </div>
-            </div>
-
-            <div class="form-group">
               <label for="total" class="control-label col-sm-3">Converted Total</label>
               <div class="col-sm-2">
                 <label id="convertedTotal" class="control-label"></label>
