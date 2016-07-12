@@ -8,6 +8,13 @@ function checkout() {
   // Get the current total
   var total = parseFloat($('#total').val()).toFixed(2);
 
+  // Check which API the user wants to use
+  if ($('#toggle-provider').prop("checked")) {
+    var api = 'realex';
+  } else {
+    var api = 'testingpays';
+  }
+
   // Send a request with the form data
   $.ajax({
     url: "/api/pay",
@@ -19,7 +26,7 @@ function checkout() {
       expiryMonth: formData[3].value,
       expiryYear: formData[4].value,
       cvv: formData[5].value,
-      api: formData[6].value,
+      api: api,
       total: total,
       currency: currency
     }
