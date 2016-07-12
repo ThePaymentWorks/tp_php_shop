@@ -1,6 +1,7 @@
 function createResponse (rawXML) {
   // Get the XML response and parse it
   var xmldoc = $.parseXML(rawXML);
+  var xmlString = (new XMLSerializer()).serializeToString(xmldoc);
   var $xml = $(xmldoc);
   var result = $xml.find('result').text();
   var style, icon;
@@ -33,6 +34,7 @@ function createResponse (rawXML) {
             + "<p>CVN Result : " + $xml.find('cvnresult').text() + "</p>"
             + "<p>Batch ID : " + $xml.find('batchid').text() + "</p>"
             + "<p>Auth Code : " + $xml.find('authcode').text() + "</p>"
+            + "<p style='overflow-wrap: break-word'>" + $('<div/>').text(xmlString).html() + "</p>"
           + "</div>"
         + "</div>"
       + "</div>"
