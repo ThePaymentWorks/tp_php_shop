@@ -228,7 +228,12 @@ h4 {
   border-bottom: 0;
 }
 /* Classes added to the response panel */
-
+.response-panel {
+  height: 101vh;
+  background-color: #FEFEFE;
+  border-left: 2px solid #dddddd;
+  border-right: 2px solid #dddddd
+}
 .success > .panel-default {
   border-color: var(--success-column-color);
 }
