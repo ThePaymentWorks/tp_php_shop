@@ -92,8 +92,8 @@ $app->post('/api/pay', function (Request $request) use ($app, $config) {
   }
 
   $formInputData = array(
-    'firstName' => $request->request->get('firstname'),
-    'lastName' => $request->request->get('lastname'),
+    'firstName' => $request->request->get('firstName'),
+    'lastName' => $request->request->get('lastName'),
     'number' => $request->request->get('cardNumber'),
     'cvv' => $request->request->get('cvv'),
     'expiryMonth' => $request->request->get('expiryMonth'),

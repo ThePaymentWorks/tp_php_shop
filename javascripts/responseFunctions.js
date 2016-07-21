@@ -85,7 +85,7 @@ function otherProcessor () {
 // Re-submit the form ensuring a success message
 function retry () {
   $('#total').val(function (index, value) {
-    return value = 0.00;
+    return value = 1.00;
   });
 
   checkout();

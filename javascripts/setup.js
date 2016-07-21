@@ -15,4 +15,7 @@ $(function () {
 
   // Call converted total on page load
   convertedTotal();
+
+  // Enable bootstrap tooltips
+  $('[data-toggle="tooltip"]').tooltip()
 })

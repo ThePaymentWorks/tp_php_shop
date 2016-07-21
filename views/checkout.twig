@@ -9,8 +9,8 @@
       <div class="row margin-top">
         <div class="col-sm-12">
 
-          <div class="form-group col-sm-12">
-            <label for="processor" class="control-label col-sm-8"><h2>Checkout with</h2></label>
+          <div class="form-group col-sm-12" style="height:60px;">
+            <div for="processor" class="control-label col-sm-8"><h2>Checkout with</h2></div>
             <div class="col-sm-4">
               <h2><input class="btn-shadow" id="toggle-provider" type="checkbox" data-on="Realex" data-off="Testing Pays" data-onstyle="danger" data-offstyle="success" checked data-toggle="toggle"></h2>
             </div>
@@ -39,19 +39,18 @@
 
             <div class="form-group">
               <label for="cardNumber" class="control-label col-sm-3">Card Number</label>
-              <div id="cardNumber" class="dropdown col-sm-4">
-                <button class="btn btn-block btn-secondary dropdown-toggle" type="button" id="cardNumberDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" value="4263970000005262">
-                  4263970000005262
-                  <span class="caret"></span>
+              <div id="cardNumberDropDown" class="cardNumber dropdown col-sm-4">
+                <button class="btn btn-block dropdown-toggle card-dropdown" type="button" id="cardNumberDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" value="4263970000005262">4263970000005262 (00 ­ Successful)<span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                  <li><a id="success">4263970000005262</a></li>
-                  <li><a id="declined">4000120000001154</a></li>
-                  <li><a id="referral-b">4000130000001724</a></li>
-                  <li><a id="referral-a">4000160000004147</a></li>
-                  <li><a id="comms-error">4009830000001985</a></li>
+                  <li><a>4263970000005262 (00 ­ Successful)</a></li>
+                  <li><a>4000120000001154 (101 ­ Declined)</a></li>
+                  <li><a>4000130000001724 (102 ­ Referral B)</a></li>
+                  <li><a>4000160000004147 (103 ­ Referral A)</a></li>
+                  <li><a>4009830000001985 (200 ­ Comms Error)</a></li>
                 </ul>
               </div>
+              <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="When pointing at the TestingPays Sim, you can use any valid credit number in this field"></span>
             </div>
 
             <div class="form-group">
@@ -89,6 +88,16 @@
                   <li><a id="RUB" href="#">RUB</a></li>
                 </ul>
               </div>
+              <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="When pointing at TestingPays Sim, use the decimal part of the amount to get back the Realex API response you  want to test.
+
+              Examples:
+
+              123.00 (00 - Successful)
+              52.10 (101_declined_bank)
+              400.12 (103_card_stolen)
+              76.21  (205_bank_comm)
+              45.22 (507_currency)
+              670.16 (603_error)"></span>
             </div>
 
             <div class="form-group">

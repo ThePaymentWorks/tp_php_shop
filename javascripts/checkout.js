@@ -1,7 +1,5 @@
 function checkout() {
-  // Disable the button until the response is gotten again
-  $('#checkout').attr("disabled", true);
-
+  console.log('checkout called');
   // Get the form data
   var formData = $('form').serializeArray();
 
@@ -9,8 +7,13 @@ function checkout() {
   var currency = $('#currencyDropDown').val();
 
   // Get the card number
-  var cardNumber = $('#cardNumberDropDown').val();
-
+  if ($('#cardNumber').val()) {
+    var cardNumber = $('#cardNumber').val();
+  } else {
+    var cardNumber = $('#cardNumberDropDown').text().split("(", 1);
+    cardNumber = cardNumber[0];
+  }
+  console.log(cardNumber);
   // Get the current total
   var total = parseFloat($('#total').val()).toFixed(2);
 
@@ -21,13 +24,14 @@ function checkout() {
     var api = 'testingpays';
   }
 
+  console.log(formData);
   // Send a request with the form data
   $.ajax({
     url: "/api/pay",
     type: "POST",
     data: {
-      firstname: formData[0].value,
-      lastname: formData[1].value,
+      firstName: formData[0].value,
+      lastName: formData[1].value,
       cardNumber: cardNumber,
       expiryMonth: formData[2].value,
       expiryYear: formData[3].value,
@@ -39,15 +43,8 @@ function checkout() {
   }).done(function (res) {
     // Create the new response item
     createResponse(res);
-
-    // Re-enable the button
-    $('#checkout').attr("disabled", false);
   }).fail(function (err) {
     createFunctionalResponse('timeout');
-
-    // Re-enable the button
-    $('#checkout').attr("disabled", false);
-
     console.log(err);
   });
 }
