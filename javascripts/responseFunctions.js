@@ -72,6 +72,9 @@ function currency (currency) {
 
   // Update the converted currency
   convertedTotal();
+
+  // Re-submit for a success
+  retry();
 }
 
 // Dummy message for paying with paypal (another payment processor)
