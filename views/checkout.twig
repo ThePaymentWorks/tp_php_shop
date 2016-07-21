@@ -17,23 +17,29 @@
           <form id="checkout-form" class="form-horizontal" onsubmit="return false">
 
             <div class="form-group">
-              <label for="card-holder" class="control-label col-sm-3">Firstname</label>
+              <label for="card-holder" class="control-label col-sm-3">Full Name</label>
               <div class="col-sm-6">
-                <input id="firstname" class="form-control" name="firstname" placeholder="John" type="text" id="firstname" placeholder="John" value="John" required >
+                <input id="firstname" class="form-control" name="firstname" placeholder="e.g. John McBuyer" type="text" id="firstname" value="Frank McBuyer" required >
               </div>
             </div>
 
             <div class="form-group">
-              <label for="card-holder" class="control-label col-sm-3">Lastname</label>
-              <div class="col-sm-6">
-                <input id="lastname" class="form-control" name="lastname" placeholder="Doe" value="Doe" type="text" required>
-              </div>
             </div>
 
             <div class="form-group">
-              <label for="card-Number" class="control-label col-sm-3">Card Number</label>
-              <div class="col-sm-6">
-                <input id="cardNumber" class="form-control" name="cardNumber" placeholder="e.g. 4319 5046 8156 3245" value="4263970000005262"  required>
+              <label for="cardNumber" class="control-label col-sm-3">Card Number</label>
+              <div id="cardNumber" class="dropdown col-sm-2">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="cardNumberDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" value="4263970000005262">
+                  4263970000005262
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                  <li><a id="success">4263970000005262</a></li>
+                  <li><a id="declined">4000120000001154</a></li>
+                  <li><a id="referral-b">4000130000001724</a></li>
+                  <li><a id="referral-a">4000160000004147</a></li>
+                  <li><a id="comms-error">4009830000001985</a></li>
+                </ul>
               </div>
             </div>
 
@@ -62,18 +68,13 @@
               </div>
             </div>
 
-
-
             <div class="form-group">
               <label for="total" class="control-label col-sm-3">Total</label>
               <div class="col-sm-3">
                 <input id="total" step="0.01" class="form-control" name="total" placeholder="${{total}}" value="{{total}}" type="number" required>
               </div>
-            </div>
 
-            <div class="form-group">
-              <label for="currency" class="control-label col-sm-3">Currency</label>
-              <div id="dropdown" class="dropdown col-sm-2">
+              <div id="dropdown" class="dropdown currency-dropdown col-sm-2">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="currencyDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" value="EUR">
                   EUR
                   <span class="caret"></span>
@@ -85,7 +86,9 @@
                   <li><a id="RUB" href="#">RUB</a></li>
                 </ul>
               </div>
+            </div>
 
+            <div class="form-group">
               <label for="total" class="control-label col-sm-3">Converted Total</label>
               <div class="col-sm-2">
                 <label id="convertedTotal" class="control-label"></label>
@@ -105,7 +108,7 @@
       </div>
     </div>
 
-    <div class="col-sm-4 response-panel">
+    <div class="col-sm-4" style="height: 101vh; background-color: #FEFEFE;">
       <div class="row margin-top">
         <div class="col-sm-12">
           <h2>API Responses</h2>

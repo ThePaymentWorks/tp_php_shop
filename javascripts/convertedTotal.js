@@ -1,6 +1,6 @@
 function convertedTotal () {
   // Get the currency and current total
-  var currency = $(".dropdown").find('.btn').val();
+  var currency = $(".currency-dropdown").find('.btn').val();
   var total = $('#total').val();
 
   // Get the converted total
