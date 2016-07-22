@@ -6,7 +6,7 @@ $(function() {
 
       var cardNumberField = `
       <div id="cardNumberDropDown" class="cardNumber dropdown col-sm-4">
-        <button class="btn btn-block dropdown-toggle card-dropdown" type="button" id="cardNumberDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" value="4263970000005262">4263970000005262 (00 ­ Successful)<span class="caret"></span>
+        <button class="dropdown-toggle card-dropdown form-control" type="button" id="cardNumberDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" value="4263970000005262">4263970000005262 (00 ­ Successful)<span class="caret"></span>
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
           <li><a>4263970000005262 (00 ­ Successful)</a></li>
