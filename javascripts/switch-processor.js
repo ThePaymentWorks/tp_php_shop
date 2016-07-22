@@ -4,6 +4,7 @@ $(function() {
     if ($(this).prop('checked')) {
       // Realex is active
 
+      // Insert the dropdown menu containing the possible realex cards
       var cardNumberField = `
       <div id="cardNumberDropDown" class="cardNumber dropdown col-sm-4">
         <button class="dropdown-toggle card-dropdown form-control" type="button" id="cardNumberDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" value="4263970000005262">4263970000005262 (00 ­ Successful)<span class="caret"></span>
@@ -27,8 +28,7 @@ $(function() {
         </ul>
       </div>`;
 
-      var cardNumberInfo = `
-4263970000005262 (00 - Successful)
+      var cardNumberInfo = `4263970000005262 (00 - Successful)
 4000120000001154 (101 - Declined)
 4000130000001724 (102 - Referral B)
 4000160000004147 (103 - Referral A)
@@ -50,11 +50,14 @@ $(function() {
       $("#cardNumberInfo").attr('data-original-title', cardNumberInfo);
       $("#total-info").attr('data-original-title', totalInfo);
 
-      // Add the dropdownreplace functionality again
+      // Add the dropdownreplace functionality to the dropdown we just created
       $(".dropdown-menu li a").click(function(){
         $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
         $(this).parents(".dropdown").find('.btn').text($(this).text());
       });
+
+      // Change the color of the tooltips
+      $(".tp-info").addClass('realex-info').removeClass('tp-info');
     } else {
       // Testing Pays is active
       var cardNumberField = `
@@ -77,6 +80,18 @@ Examples:
       $(".cardNumber").replaceWith(cardNumberField);
       $("#cardNumberInfo").attr('data-original-title', cardNumberInfo);
       $("#total-info").attr('data-original-title', totalInfo);
+
+      // Change the color of the tooltips
+      $(".realex-info").addClass('tp-info').removeClass('realex-info');
     }
+
+    // Animate the change over
+    animateOnToggle();
   })
 })
+
+function animateOnToggle() {
+  $('.cardNumber').animateCss('fadeIn');
+  $("#cardNumberInfo").animateCss('bounceIn');
+  $('#total-info').animateCss('bounceIn');
+}
