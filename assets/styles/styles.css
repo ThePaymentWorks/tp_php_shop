@@ -275,12 +275,11 @@ h4 {
   padding: 50px;
 }
 .card-dropdown {
-  font-size: xx-small;
-  line-height: 20px;
-  background-color: var(--danger);
-  color: white;
+  font-size: x-small;
 }
 .tooltip-inner {
   white-space: pre-line;
-  text-align: justify;
+  text-align: left;
+  width: 250px;
+  max-width: 250px;
 }
