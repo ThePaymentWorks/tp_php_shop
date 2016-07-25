@@ -4,7 +4,7 @@ function checkout() {
   var formData = $('form').serializeArray();
 
   // Get the selected Currency
-  var currency = $('#currencyDropDown').val();
+  var currency = $('#currencyDropDown').text();
 
   // Get the card number
   if ($('#cardNumber').val()) {
@@ -13,7 +13,7 @@ function checkout() {
     var cardNumber = $('#cardNumberDropDown').text().split("(", 1);
     cardNumber = cardNumber[0];
   }
-  console.log(cardNumber);
+
   // Get the current total
   var total = parseFloat($('#total').val()).toFixed(2);
 
@@ -24,7 +24,7 @@ function checkout() {
     var api = 'testingpays';
   }
 
-  console.log(formData);
+
   // Send a request with the form data
   $.ajax({
     url: "/api/pay",
