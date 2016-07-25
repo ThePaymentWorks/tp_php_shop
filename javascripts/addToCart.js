@@ -12,9 +12,5 @@ $(".addToCart").on("click", function (event) {
       price: data[1],
       quantity: 1
     }
-  }).done(function (res) {
-    console.log(res);
-  }).fail(function (err) {
-    console.log(err);
-  });
+  })
 });

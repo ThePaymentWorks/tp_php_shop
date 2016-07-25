@@ -1,5 +1,4 @@
 function checkout() {
-  console.log('checkout called');
   // Get the form data
   var formData = $('form').serializeArray();
 
@@ -23,7 +22,6 @@ function checkout() {
   } else {
     var api = 'testingpays';
   }
-
 
   // Send a request with the form data
   $.ajax({
