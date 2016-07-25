@@ -7,7 +7,7 @@ $(function() {
       // Insert the dropdown menu containing the possible realex cards
       var cardNumberField = `
       <div id="cardNumberDropDown" class="cardNumber dropdown col-sm-4">
-        <button class="dropdown-toggle card-dropdown form-control" type="button" id="cardNumberDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" value="4263970000005262">4263970000005262 (00 ­ Successful)<span class="caret"></span>
+        <button class="dropdown-toggle card-dropdown form-control dropdown-id" type="button" id="cardNumberDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" value="4263970000005262">4263970000005262 (00 ­ Successful)<span class="caret"></span>
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
           <li><a>4263970000005262 (00 ­ Successful)</a></li>
@@ -52,8 +52,7 @@ $(function() {
 
       // Add the dropdownreplace functionality to the dropdown we just created
       $(".dropdown-menu li a").click(function(){
-        $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
-        $(this).parents(".dropdown").find('.btn').text($(this).text());
+        $(this).parents(".dropdown").find('.dropdown-id').text($(this).text());
       });
 
       // Change the color of the tooltips
