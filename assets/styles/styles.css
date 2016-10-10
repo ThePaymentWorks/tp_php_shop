@@ -2,15 +2,15 @@
 
 
 /* Themeing */
-:root {
-  --bg-color: #FFF7F5;
-  --text-color: #FFF7F5;
-  --primary-color: #332C29;
-  --secondary-color: #FF8B38;
+/*:root {
+  --bg-color: #FEFEFE;
+  --text-color: white;
+  --primary-color: #28648C;
+  --secondary-color: #FFAC00;
   --shadow: #26201E;
 
   --secondary-background: white;
-  --danger: #DA3B37;
+  --danger: #bc4b51;
 
   --error-column-color: #D92626;
   --error-header-color: #EC9393;
@@ -21,25 +21,25 @@
   --success-header-color: #2CEFC0;
   --success-body-color: #80F5D4;
   --success-text: #3B6264;
-}
+}*/
 
 /* General styling */
 body {
-  background-color: var(--bg-color);
+  background-color: #FEFEFE;
   min-height: 100vh;
-  color: var(--primary-color);
+  color: #28648C;
 }
 hr {
-  border-top: 1px solid var(--bg-color);
+  border-top: 1px solid #FEFEFE;
 }
 h2 {
-  color: var(--primary-color);
+  color: #28648C;
 }
 h3 {
-  color: var(--primary-color);
+  color: #28648C;
 }
 h4 {
-  color: var(--primary-color);
+  color: #28648C;
 }
 .no-padding {
   padding: 0;
@@ -54,51 +54,54 @@ h4 {
   border: 0;
 }
 .btn-shadow {
-  box-shadow: 0 0 5px var(--shadow);
+  box-shadow: 0 0 5px #26201E;
 }
 .btn-primary {
-  background-color: var(--primary-color);
-  color: var(--text-color);
+  background-color: #28648C;
+  color: #FAFAFA;
 }
 .btn-primary:hover {
-  background-color: var(--primary-color);
-  color: var(--text-color);
+  background-color: #28648C;
+  color: #FAFAFA;
 }
 .btn-primary:focus {
-  background-color: var(--primary-color);
-  color: var(--text-color);
+  background-color: #28648C;
+  color: #FAFAFA;
 }
 .btn-secondary {
-  background-color: var(--secondary-color);
-  color: var(--text-color);
+  background-color: #FAFAFA;
+  color: #4A4A4A;
 }
 .btn-secondary:hover {
-  color: var(--text-color);
+  color: #4A4A4A;
 }
 .btn-secondary:focus {
-  color: var(--text-color);
+  color: #4A4A4A;
 }
 .btn-danger {
-  background-color: var(--danger);
-  color: var(--text-color);
+  background-color:  #bc4b51;
+  color: #FAFAFA;
 }
 /* Styling for the navbar */
 .navbar-default {
   height: 100vh;
   position: fixed;
-  background-color: var(--primary-color);
+  background-color: #28648C;
 }
 .navbar-nav > li {
   text-align: center;
 }
 .navbar-default {
   border: 0;
-  border-right: 2px solid var(--secondary-color);
+  border-right: 2px solid #FAFAFA;
   border-radius: 0;
   min-width: 150px;
 }
 .navbar-default .navbar-nav > li > a {
-  color: var(--text-color) !important;
+  color: #FAFAFA;
+}
+.navbar-default .navbar-nav > li > a:hover {
+  color: #FAFAFA;
 }
 /* make sidebar nav vertical */
 @media (min-width: 768px) {
@@ -133,7 +136,7 @@ h4 {
 /* Styling for the grid items  */
 .grid-item {
   margin: 15px;
-  box-shadow: 0 0 5px var(--shadow);
+  box-shadow: 0 0 5px #26201E;
   max-width: 195px;
 }
 .grid-item-image {
@@ -153,6 +156,7 @@ h4 {
   max-height: 200px;
   top:15px;
   left:30px;
+  background: black;
   background: rgba(0,0,0,0.6);
   opacity:0;
   transition: all 0.5s;
@@ -179,7 +183,8 @@ h4 {
     max-height: 200px;
     top:15px;
     left:30px;
-    background:rgba(0,0,0,0.6);
+    background: black;
+    background: rgba(0,0,0,0.6);
 }
 .grid-item-image:before {
     content: attr(data-content);
@@ -187,7 +192,7 @@ h4 {
     height: 100%;
     max-width: 195px;
     max-height: 200px;
-    color: var(--text-color);
+    color: #FAFAFA;
     z-index:1;
     padding:4px 10px;
     text-align:center;
@@ -201,11 +206,11 @@ h4 {
 
 /* Styling for the cart page  */
 .cart-item {
-  background-color: var(--secondary-background);
-  border-right: 2px solid var(--secondary-color);
-  border-left: 2px solid var(--secondary-color);
+  background-color: #FAFAFA;
+  border-right: 2px solid #FAFAFA;
+  border-left: 2px solid #FAFAFA;
   margin: 5px 0;
-  box-shadow: 0 0 5px var(--shadow);
+  box-shadow: 0 0 5px #26201E;
   border-bottom: 0;
   height: 50px;
 }
@@ -219,12 +224,12 @@ h4 {
 
 /* Styling for the checkout page */
 .response-item {
-  background-color: var(--secondary-background);
-  border-right: 2px solid var(--secondary-color);
-  border-left: 2px solid var(--secondary-color);
+  background-color: #FAFAFA;
+  border-right: 2px solid #FAFAFA;
+  border-left: 2px solid #FAFAFA;
   margin: 15px 0;
   padding: 5px 15px;
-  box-shadow: 0 0 5px var(--shadow);
+  box-shadow: 0 0 5px #26201E;
   border-bottom: 0;
 }
 /* Classes added to the response panel */
@@ -235,29 +240,29 @@ h4 {
   border-right: 2px solid #dddddd
 }
 .success > .panel-default {
-  border-color: var(--success-column-color);
+  border-color: #00BF86;
 }
 .success > .panel-default > .panel-heading  {
-  background-color: var(--success-header-color);
-  color: var(--success-text);
+  background-color: #2CEFC0;
+  color: #3B6264;
 }
 .success > .panel-default > .panel-heading + .panel-collapse > .panel-body {
-  background-color: var(--success-body-color);
-  border-color: var(--success-body-color);
-  color: var(--success-text);
+  background-color: #80F5D4;
+  border-color: #80F5D4;
+  color: #3B6264;
 }
 
 .error > .panel-default {
-  border-color: var(--error-column-color);
+  border-color: #D92626;
 }
 .error > .panel-default > .panel-heading  {
-  background-color: var(--error-header-color);
-  color: var(--error-text);
+  background-color: #EC9393;
+  color: #7A1200;
 }
 .error > .panel-default > .panel-heading + .panel-collapse > .panel-body {
-  background-color: var(--error-body-color);
-  border-color: var(--error-body-color);
-  color: var(--error-text);
+  background-color: #F2B3B3;
+  border-color: #F2B3B3;
+  color: #7A1200;
 }
 
 .glyphicon {
