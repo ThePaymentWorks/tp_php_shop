@@ -36,8 +36,8 @@ $app->before(function (Request $request) {
   }
 });
 
-$app->after(function (Request $request, Response $response) {
-    $response->headers->set('Access-Control-Allow-Origin', '*');
+$app->after(function (Request $request, Response $response) use ($config) {
+    $response->headers->set('Access-Control-Allow-Origin', $config->client_url);
 });
 
 // root route
