@@ -4,6 +4,7 @@ use Omnipay\Common\CreditCard;
 use Omnipay\Omnipay;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
 require __DIR__.'/vendor/autoload.php';
@@ -33,6 +34,10 @@ $app->before(function (Request $request) {
     $data = json_decode($request->getContent(), true);
     $request->request->replace(is_array($data) ? $data : array());
   }
+});
+
+$app->after(function (Request $request, Response $response) {
+    $response->headers->set('Access-Control-Allow-Origin', '*');
 });
 
 // root route
