@@ -64,20 +64,3 @@ if ($response->isRedirect()) {
   return $response->getXML();
 }
 ```
-
-
-#### Customizing the shop
-
-##### Products & Images
-The details for products and their images are stored within the products.csv file found [here](assets/products/products.csv). The columns are organized as follows.
-
-|Product Name|Product Image Name|Price|
-|---|---|---|
-|Mug|mug.jpg|4.1|
-|Cup|cup.jpg|3.5|
-|Plate|plate.jpg|6.25|
-
-##### Styling
-In order to style the application you can change the theme colors
-
-To change the colors used in the application you can change the css variables within the styles.css file found [here](assets/styles/styles.css).
