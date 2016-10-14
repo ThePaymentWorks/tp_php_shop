@@ -7,7 +7,6 @@
   ],
   "require": {
     "coatesap/omnipay-realex": "dev-testing-pays",
-    "twig/twig": "~1.0",
     "silex/silex": "~1.1"
   }
 }
