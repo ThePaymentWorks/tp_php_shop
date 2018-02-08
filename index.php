@@ -31,6 +31,11 @@ $app->after(function (Request $request, Response $response) use ($config) {
     $response->headers->set('Access-Control-Allow-Origin', $config->client_url);
 });
 
+// Main redirect when hitting the root
+$app->get('/', function (Request $request) use ($app, $config) {
+    return $app->redirect($config->main_redirect);
+});
+
 // Make a request to the realex API
 $app->post('/api/pay', function (Request $request) use ($app, $config) {
   // Create a gateway to make a request
