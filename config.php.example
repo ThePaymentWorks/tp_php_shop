@@ -1,0 +1,19 @@
+<?php
+$config = new stdClass();
+
+$config->realex_endpoint = 'https://epage.payandshop.com/epage-remote.cgi';
+$config->realex_merchantId = 'YOUR_REALEX_MERCHANT_ID';
+$config->realex_account = 'internet';
+$config->realex_secret = 'YOUR_REALEX_SECRET';
+
+$config->testingpays_endpoint = 'https://api.testingpays.com/YOUR_API_KEY/realex/v1/services';
+$config->testingpays_merchantId = 'YOUR_API_KEY';
+$config->testingpays_account = 'internet';
+$config->testingpays_secret = 'SharedSecret';
+
+$config->client_url = 'YOUR_SHOP_ADDRESS';
+$config->main_redirect = 'https://www.testingpays.com';
+
+return $config;
+?>
+

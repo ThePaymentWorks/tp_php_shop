@@ -4,9 +4,12 @@
 In order to install the application ensure that you have[ php v5.5](http://php.net/downloads.php) installed and [composer](https://getcomposer.org/download/). Then follow these steps :
 
 - Clone the repo
-- cd into the directory
-- run `composer install`
-
+- CD into the directory
+- Run `composer install`
+- Copy the [config.php.examle](config.php.example) file as `config.php` and add your own credentials such as:
+  - Realex Merchant ID
+  - Realex secret
+  - [Testing Pays](https://www.testingpays.com) API Key
 
 #### Running the app
 Once inside the apps directory run this command
@@ -28,7 +31,7 @@ The application consists of a single endpoint `/api/pay` where you can trigger p
 #### Integrating with Realex / Testing Pays
 In order to integrate with Realex we will use a [fork of omnipay-realex](https://github.com/ThePaymentWorks/omnipay-realex). This allows us to use both Testing Pays and Realex at once. In order to switch between them simply change the configuration settings as shown in the below example.
 
-```js
+```php
 // Create a gateway to make a request
 $gateway = Omnipay::create('Realex_Remote');
 
