@@ -55,6 +55,10 @@ $app->post('/api/pay', function (Request $request) use ($app, $config) {
     $gateway->setSecret($config->realex_secret);
   }
 
+  if($request->request->get('3dsecure') == 'true') {
+      $gateway->set3dSecure(1);
+  }
+
   $formInputData = array(
     'firstName' => $request->request->get('firstName'),
     'lastName' => $request->request->get('lastName'),
