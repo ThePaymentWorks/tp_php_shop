@@ -78,11 +78,19 @@ $app->post('/api/pay', function (Request $request) use ($app, $config) {
   ))->send();
 
   if ($response->isRedirect()) {
-    // redirect to offsite payment gateway
-    return $response->redirect();
+      // redirect to offsite payment gateway
+      // return JSON object with the redirect details
+      return json_encode([
+          "url" => $response->getRedirectUrl(),
+          "method" => $response->getRedirectMethod(),
+          "data" => $response->getRedirectData(),
+          "xml" => $response->getXML()
+      ]);
   } else {
-    // Get the XML response
-    return $response->getXML();
+      // Get the XML response
+      return json_encode([
+          "xml" => $response->getXML()
+      ]);
   }
 });
 
