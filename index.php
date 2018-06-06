@@ -94,6 +94,49 @@ $app->post('/api/pay', function (Request $request) use ($app, $config) {
   }
 });
 
+// Make a request to the realex API
+$app->post('/three_d_success', function (Request $request) use ($app, $config) {
+  // Create a gateway to make a request
+  $gateway = Omnipay::create('Realex_Remote');
+  $md = json_decode(base64_decode($request->request->get('MD')));
+
+  // Check which api the user wants to use
+  if($md->api == 'testingpays') {
+    // Set the default testingpays api settings
+    $gateway->setEndpoint($config->testingpays_endpoint);
+    $gateway->setMerchantId($config->testingpays_merchantId);
+    $gateway->setAccount($config->testingpays_account);
+    $gateway->setSecret($config->testingpays_secret);
+  } else {
+    // Set the default realex api settings
+    $gateway->setMerchantId($config->realex_merchantId);
+    $gateway->setAccount($config->realex_account);
+    $gateway->setSecret($config->realex_secret);
+  }
+
+  // First we need to verify the signature
+
+  $md_encoded = base64_encode(array(
+        'transactionId' => 'A000001',
+        'orderId' => 'A000001',
+        'amount' => $md->total,
+        'currency' => $md->currency,
+        'firstName' => $md->firstName,
+        'lastName' => $md->lastName,
+        'number' => $md->cardNumber,
+        'cvv' => $md->cvv,
+        'expiryMonth' => $md->expiryMonth,
+        'expiryYear' => $md->expiryYear
+    ));
+
+  $response = $gateway->completePurchase(array(
+      'PaRes' => $request->request->get('PaRes'),
+      'MD' => $md_encoded
+  ))->send();
+  echo print_r($response);
+  return $response;
+});
+
 $app->run();
 
 ?>
