@@ -119,9 +119,11 @@ $app->post('/three_d_success', function (Request $request) use ($app, $config) {
       'PaRes' => $request->request->get('PaRes'),
       'MD' => $request->request->get('MD')
   ))->send();
-  return json_encode([
-      "xml" => $response->getXML()
-  ]);
+
+  // Return to the Ember shop with the response XML returned
+  //header("Location: " . $config->client_url . '?three_d_return=true&xml=' . $response->getXML()); /* Redirect browser */
+  $xml_data = base64_encode($response->getXML());
+  return $app->redirect($config->client_url . '?three_d_return=true&xml=' . $xml_data);
 });
 
 $app->run();
