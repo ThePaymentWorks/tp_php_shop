@@ -115,26 +115,13 @@ $app->post('/three_d_success', function (Request $request) use ($app, $config) {
   }
 
   // First we need to verify the signature
-
-  $md_encoded = base64_encode(array(
-        'transactionId' => 'A000001',
-        'orderId' => 'A000001',
-        'amount' => $md->total,
-        'currency' => $md->currency,
-        'firstName' => $md->firstName,
-        'lastName' => $md->lastName,
-        'number' => $md->cardNumber,
-        'cvv' => $md->cvv,
-        'expiryMonth' => $md->expiryMonth,
-        'expiryYear' => $md->expiryYear
-    ));
-
   $response = $gateway->completePurchase(array(
       'PaRes' => $request->request->get('PaRes'),
-      'MD' => $md_encoded
+      'MD' => $request->request->get('MD')
   ))->send();
-  echo print_r($response);
-  return $response;
+  return json_encode([
+      "xml" => $response->getXML()
+  ]);
 });
 
 $app->run();
