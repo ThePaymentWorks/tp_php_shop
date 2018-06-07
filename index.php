@@ -96,35 +96,39 @@ $app->post('/api/pay', function (Request $request) use ($app, $config) {
 
 // Make a request to the realex API
 $app->post('/three_d_success', function (Request $request) use ($app, $config) {
-  // Create a gateway to make a request
-  $gateway = Omnipay::create('Realex_Remote');
-  $md = json_decode(base64_decode($request->request->get('MD')));
-
-  // Check which api the user wants to use
-  if($md->api == 'testingpays') {
-    // Set the default testingpays api settings
-    $gateway->setEndpoint($config->testingpays_endpoint);
-    $gateway->setMerchantId($config->testingpays_merchantId);
-    $gateway->setAccount($config->testingpays_account);
-    $gateway->setSecret($config->testingpays_secret);
+  if ("" == $request->request->get('PaRes')) {
+      return $app->redirect($config->client_url . '?three_d_return=true&three_d_cancelled=true');
   } else {
-    // Set the default realex api settings
-    $gateway->setMerchantId($config->realex_merchantId);
-    $gateway->setAccount($config->realex_account);
-    $gateway->setSecret($config->realex_secret);
+      // Create a gateway to make a request
+      $gateway = Omnipay::create('Realex_Remote');
+      $md = json_decode(base64_decode($request->request->get('MD')));
+
+      // Check which api the user wants to use
+      if($md->api == 'testingpays') {
+        // Set the default testingpays api settings
+        $gateway->setEndpoint($config->testingpays_endpoint);
+        $gateway->setMerchantId($config->testingpays_merchantId);
+        $gateway->setAccount($config->testingpays_account);
+        $gateway->setSecret($config->testingpays_secret);
+      } else {
+        // Set the default realex api settings
+        $gateway->setMerchantId($config->realex_merchantId);
+        $gateway->setAccount($config->realex_account);
+        $gateway->setSecret($config->realex_secret);
+      }
+
+      // First we need to verify the signature
+      $response = $gateway->completePurchase(array(
+          'PaRes' => $request->request->get('PaRes'),
+          'MD' => $request->request->get('MD')
+      ))->send();
+
+      // Return to the Ember shop with the response XML returned
+      //header("Location: " . $config->client_url . '?three_d_return=true&xml=' . $response->getXML()); /* Redirect browser */
+      $x = str_replace(array("\r", "\n"), '', $response->getXML());
+      $xml_data = base64_encode($x);
+      return $app->redirect($config->client_url . '?three_d_return=true&xml=' . urlencode($xml_data));
   }
-
-  // First we need to verify the signature
-  $response = $gateway->completePurchase(array(
-      'PaRes' => $request->request->get('PaRes'),
-      'MD' => $request->request->get('MD')
-  ))->send();
-
-  // Return to the Ember shop with the response XML returned
-  //header("Location: " . $config->client_url . '?three_d_return=true&xml=' . $response->getXML()); /* Redirect browser */
-  $x = str_replace(array("\r", "\n"), '', $response->getXML());
-  $xml_data = base64_encode($x);
-  return $app->redirect($config->client_url . '?three_d_return=true&xml=' . urlencode($xml_data));
 });
 
 $app->run();
