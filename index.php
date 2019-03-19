@@ -33,7 +33,11 @@ $app->after(function (Request $request, Response $response) use ($config) {
 
 // Main redirect when hitting the root
 $app->get('/', function (Request $request) use ($app, $config) {
-    return $app->redirect($config->main_redirect);
+    return $app->redirect($config->main_redirect, 301);
+});
+
+$app->get('/{anything}', function (Request $request) use ($app, $config) {
+        return $app->redirect($config->main_redirect, 301);
 });
 
 // Make a request to the realex API
